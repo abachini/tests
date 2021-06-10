@@ -21,6 +21,7 @@ const ItemsList = ({ items }) => {
 
 function getStyledItemList() {
   return styled.div`
+    padding-top: 20px;
     border-right: 1px solid lightgray;
     height: 100%;
   `;

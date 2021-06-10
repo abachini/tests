@@ -13,7 +13,7 @@ function getStyledHeader() {
     width: 100%;
     min-height: 40px;
     padding-left: 10px;
-    vertical-align: middle;
+    line-height: 40px;
   `;
 }
 

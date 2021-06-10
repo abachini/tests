@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 import { useWinstonLogger } from "winston-react";
-import { useStoreActions } from "easy-peasy";
+import { useStoreActions, useStoreState } from "easy-peasy";
 
 const StyledItem = getStyledItem();
 const ItemContainer = getItemContainer();
 
 const Item = item => {
-  const [isOpen, setIsOpen] = useState(false);
+  const selectedItems = useStoreState(state => state.selectedItems);
+  const isSelected = !!selectedItems.filter(i => i.name === item.name).length;
+  const [isOpen, setIsOpen] = useState(isSelected);
   const { name, children } = item;
   const selectItem = useStoreActions(actions => actions.selectItem);
   const deselectItem = useStoreActions(actions => actions.deselectItem);

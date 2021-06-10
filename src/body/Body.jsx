@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Main from "../main";
 import Sidebar from "../sidebar";
+import Error from "./Error";
+import Loader from "../shared";
 
-const StyledContainer = getStyledContainer();
-const StyledLoading = getStyledLoading();
+const StyledBodyContainer = getStyledBodyContainer();
 
 export const Body = () => {
   const [error, setError] = useState(null);
@@ -27,35 +28,26 @@ export const Body = () => {
   }, []);
 
   if (error) {
-    return <div>Error: {error.message}</div>;
+    return <Error error={error} />;
   } else if (!isLoaded) {
-    return <StyledLoading>Loading...</StyledLoading>;
+    return <Loader />;
   } else {
     return (
-      <StyledContainer>
+      <StyledBodyContainer>
         <Sidebar items={items?.items} />
         <Main />
-      </StyledContainer>
+      </StyledBodyContainer>
     );
   }
 };
 
-function getStyledContainer() {
+function getStyledBodyContainer() {
   return styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: flex-start;
-  `;
-}
-
-function getStyledLoading() {
-  return styled.div`
-    display: inline-block;
-    margin: auto;
-    text-align: center;
-    width: 100%;
-    height: 500px;
+    width: ;
   `;
 }
 

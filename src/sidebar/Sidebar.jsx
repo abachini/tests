@@ -15,7 +15,7 @@ export const Sidebar = ({ items = [] }) => {
 
 function getStyledSidebar() {
   return styled.div`
-    padding: 20px 15px 20px 20px;
+    padding: 0px 15px 20px 20px;
     min-width: 200px;
     min-height: 600px;
   `;
